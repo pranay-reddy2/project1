@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:aqua;
+        }
+        h1{
+            display: flex;
+            justify-content:center;
+        }
+        button{
+            display: flex;
+            display: inline;
+            margin-left:300px;
+            margin-right:300px;
+            margin-top: 100px;
+            padding:20px;
+            border-radius: 50%;
+            background-color: pink;
+            border-width:5px;
+        }
+        #ProgressA {
+            margin: 30px;
+            width: 40%;
+            background-color: grey;
+            border-radius: 20px;
+            display: block;
+        }
+        #BarA {
+            width: 20%;
+            height: 30px;
+            background-color: black;
+            border-radius: 20px;
+            color:white;
+            font-weight: bold;
+        }
+        #ProgressB{
+            margin: 30px;
+            width: 40%;
+            background-color: grey;
+            border-radius: 20px;
+            display: block;
+        }
+        #BarB {
+            width: 20%;
+            height: 30px;
+            background-color: black;
+            border-radius: 20px;
+            font-weight: bold;
+            color:white;
+        }
+        .box{
+            display: flex;
+            align-items: space-evenly;
+        }
+    </style>
+</head>
+<body>
+    <h1>WHO ARE YOU VOTING?</h1>
+    <button id="A">Narendra Modi</button>
+    <button id="B">Donald Trump</button>
+    <div id="box">
+    <div id="ProgressA">
+        <div id="BarA"></div>
+    </div>
+    <div id="ProgressB">
+        <div id="BarB"></div>
+    </div>
+</div>
+    <script>
+        let counta=0;
+        let countb=0;
+        let e1=document.getElementById("BarA");
+        let e2=document.getElementById("BarB");
+        document.getElementById("A").addEventListener("click", function() {
+            counta++;
+            updateProgress();
+        });
+
+        document.getElementById("B").addEventListener("click", function() {
+            countb++;
+            updateProgress();
+        });
+
+        function updateProgress() {
+            let totalVotes = counta + countb;
+            if (totalVotes > 0) {
+                let percentageA = (counta / totalVotes) * 100;
+                let percentageB = (countb / totalVotes) * 100;
+
+                e1.style.width = percentageA + "%";
+                e2.style.width = percentageB + "%";
+
+                e1.innerText = Math.round(percentageA) + "%";
+                e2.innerText = Math.round(percentageB) + "%";
+            }
+        }
+
+    </script>
+</body>
+</html>
